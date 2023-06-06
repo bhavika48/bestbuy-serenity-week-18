@@ -1,12 +1,15 @@
 package com.bestbuy.productinfo;
 
+import com.bestbuy.constants.Path;
 import com.bestbuy.testbase.TestBase;
 import com.bestbuy.utils.TestUtils;
+import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Title;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -32,6 +35,10 @@ public class ProductCURDTest extends TestBase {
     @Steps
     ProductSteps productsStep;
 
+    @Before
+    public void setup(){
+        RestAssured.basePath = Path.Product;
+    }
     @Title("This test will Create a new Product")
     @Test
     public void test001() {

@@ -10,6 +10,7 @@ import net.thucydides.core.annotations.Step;
 import java.util.HashMap;
 
 public class StoreSteps{
+
     @Step("Creating store with name : {0}, type : {1}, address : {2}, address2 : {3} , city : {4},state :{5},state : {6},zip :{7},lat :{8},lng :{9},hours  :{10}")
     public ValidatableResponse createStore(String name, String type, String address, String address2, String city, String state, String zip, int lat, int lng, String hours
     ) {
@@ -45,9 +46,9 @@ public class StoreSteps{
         return SerenityRest.given().log().all()
                 .contentType(ContentType.JSON)
                 .body(storesPojo)
-                .pathParam("storeID", storeID)
+                .pathParam("storeId", storeID)
                 .when()
-                .patch(EndPoints.GET_SINGLE_STORE_BY_ID)
+                .patch(EndPoints.UPDATE_STORE_BY_ID)
                 .then();
     }
 

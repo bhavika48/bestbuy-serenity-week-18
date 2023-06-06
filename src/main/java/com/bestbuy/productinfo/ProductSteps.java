@@ -48,7 +48,7 @@ public class ProductSteps {
         return SerenityRest.given().log().all()
                 .header("Content-Type", "application/json")
                 .body(productPojo)
-                .pathParam("productID", productID)
+                .pathParam("productId", productID)
                 .when()
                 .patch(EndPoints.UPDATE_PRODUCT_BY_ID)
                 .then();
@@ -59,7 +59,7 @@ public class ProductSteps {
     public ValidatableResponse deleteSingleProduct(int productId) {
         return SerenityRest
                 .given().log().all()
-                .pathParam("id", productId)
+                .pathParam("productId", productId)
                 .when()
                 .delete(EndPoints.DELETE_PRODUCT_BY_ID)
                 .then();
@@ -68,7 +68,7 @@ public class ProductSteps {
     @Step("Getting product information with productId: {0}")
     public ValidatableResponse getSingleProduct(int productId) {
         return SerenityRest.given().log().all()
-                .pathParam("id", productId)
+                .pathParam("productId", productId)
                 .when()
                 .get(EndPoints.GET_SINGLE_PRODUCT_BY_ID)
                 .then();
