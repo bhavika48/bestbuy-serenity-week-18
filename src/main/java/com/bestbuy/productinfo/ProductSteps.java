@@ -26,20 +26,18 @@ public class ProductSteps {
     }
 
     @Step("Getting products with id : {0}")
-    public HashMap<String, Object> getProductInfoById(int id) {
-        String s1 = "data.findAll{it.id == '";
-        String s2 = "'}.get(0)";
+    public HashMap<String, Object> getProductInfoById(int productId) {
+
         return SerenityRest
                 .given()
+                    .pathParam("productId",productId)
                 .when()
-                .get(EndPoints.GET_ALL_PRODUCTS)
-                .then().statusCode(200)
+                    .get(EndPoints.GET_SINGLE_PRODUCT_BY_ID)
+                .then()
+                    .statusCode(200)
                 .extract()
-                .path(s1 + id + s2);
+                    .path("");
     }
-
-
-
 
     @Step("Update product details of id: {0}")
     public ValidatableResponse updateProduct(int productID, String name) {
